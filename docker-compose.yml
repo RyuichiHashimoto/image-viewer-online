@@ -1,8 +1,12 @@
 services:
   web:
-    image: php:8.3-apache
+    build: .
     ports:
       - "18088:80"
     volumes:
       - ./app:/var/www/html:ro
+      - db_data:/var/db
     restart: unless-stopped
+
+volumes:
+  db_data:
